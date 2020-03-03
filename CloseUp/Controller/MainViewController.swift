@@ -11,24 +11,48 @@ import UIKit
 class MainViewController: UIViewController {
 
     @IBOutlet weak var greeting: UILabel!
-        
+
     @IBOutlet weak var contactTable: UITableView!
-    
+
+    @IBOutlet weak var contactView: UIView!
+
+    let recentViewController = RecentViewController()
     let tableController = ContactsViewController()
-    
+
     @IBAction func infoButtonPressed(_ sender: UIButton) {
         let infoViewController = InfoViewController()
         self.present(infoViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
+        print("Main viewDidLoad")
         super.viewDidLoad()
         print(#function)
+        initRecentViewController()
+        initContactTableViewController()
+        setView()
+    }
+    
+    private func initRecentViewController() {
         
+        // FIXME: All init shoulbe be in RecentVC, init needs Layout != nil
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        let nib = UINib(nibName: "ContactCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "ContactCell")
+        view.addSubview(collectionView)
+        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        collectionView.frame = contactView.frame
+        
+        collectionView.delegate = recentViewController
+        collectionView.dataSource = recentViewController
+        recentViewController.setData()
+    }
+    
+    private func initContactTableViewController() {
         contactTable.delegate = tableController
         contactTable.dataSource = tableController
-        
-        setView()
     }
 
     private func setView() {

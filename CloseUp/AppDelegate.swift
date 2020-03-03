@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(#function)
         
         let rootViewController = MainViewController()
+//        let rootViewController = TestViewController()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootViewController
