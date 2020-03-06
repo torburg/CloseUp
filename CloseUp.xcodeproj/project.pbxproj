@@ -25,6 +25,11 @@
 		884BB450240E79120019C841 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884BB44F240E79120019C841 /* ContactCell.xib */; };
 		884BB452240E7BDF0019C841 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB451240E7BDF0019C841 /* ContactCell.swift */; };
 		884BB454240E87C40019C841 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB453240E87C40019C841 /* RecentViewController.swift */; };
+		884BB46124125DCB0019C841 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB46024125DCB0019C841 /* CoreDataManager.swift */; };
+		884BB46624125FB40019C841 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB46224125FB40019C841 /* Note+CoreDataClass.swift */; };
+		884BB46724125FB40019C841 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB46324125FB40019C841 /* Note+CoreDataProperties.swift */; };
+		884BB46824125FB40019C841 /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB46424125FB40019C841 /* Contact+CoreDataClass.swift */; };
+		884BB46924125FB40019C841 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB46524125FB40019C841 /* Contact+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +51,11 @@
 		884BB44F240E79120019C841 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
 		884BB451240E7BDF0019C841 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		884BB453240E87C40019C841 /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		884BB46024125DCB0019C841 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		884BB46224125FB40019C841 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		884BB46324125FB40019C841 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		884BB46424125FB40019C841 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
+		884BB46524125FB40019C841 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				884BB406240D45770019C841 /* AppDelegate.swift */,
+				884BB46A24126E360019C841 /* Storage */,
+				884BB4552411317A0019C841 /* Model */,
 				884BB43A240D984D0019C841 /* Controller */,
 				884BB439240D98390019C841 /* View */,
 				884BB412240D457A0019C841 /* Assets.xcassets */,
@@ -120,6 +132,25 @@
 				884BB451240E7BDF0019C841 /* ContactCell.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		884BB4552411317A0019C841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				884BB46224125FB40019C841 /* Note+CoreDataClass.swift */,
+				884BB46324125FB40019C841 /* Note+CoreDataProperties.swift */,
+				884BB46424125FB40019C841 /* Contact+CoreDataClass.swift */,
+				884BB46524125FB40019C841 /* Contact+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		884BB46A24126E360019C841 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				884BB46024125DCB0019C841 /* CoreDataManager.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,13 +255,18 @@
 				884BB452240E7BDF0019C841 /* ContactCell.swift in Sources */,
 				884BB454240E87C40019C841 /* RecentViewController.swift in Sources */,
 				884BB407240D45770019C841 /* AppDelegate.swift in Sources */,
+				884BB46924125FB40019C841 /* Contact+CoreDataProperties.swift in Sources */,
+				884BB46724125FB40019C841 /* Note+CoreDataProperties.swift in Sources */,
 				884BB43C240D986B0019C841 /* Helpers.swift in Sources */,
 				884BB44D240E78320019C841 /* TestViewController.swift in Sources */,
 				884BB432240D81CC0019C841 /* ContactsViewController.swift in Sources */,
 				884BB411240D45770019C841 /* CloseUp.xcdatamodeld in Sources */,
+				884BB46824125FB40019C841 /* Contact+CoreDataClass.swift in Sources */,
 				884BB42F240D80760019C841 /* MainViewController.swift in Sources */,
 				884BB43E240D98810019C841 /* ViewClasses.swift in Sources */,
+				884BB46624125FB40019C841 /* Note+CoreDataClass.swift in Sources */,
 				884BB434240D89380019C841 /* InfoViewController.swift in Sources */,
+				884BB46124125DCB0019C841 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
