@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Contact" representedClassName="Contact" syncable="YES">
+        <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
+        <attribute name="updatedDate" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="note" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="contact" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
@@ -10,7 +12,7 @@
         <relationship name="contact" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="note" inverseEntity="Contact"/>
     </entity>
     <elements>
-        <element name="Contact" positionX="-256.98828125" positionY="-99.5625" width="128" height="73"/>
+        <element name="Contact" positionX="-256.98828125" positionY="-99.5625" width="128" height="103"/>
         <element name="Note" positionX="-36" positionY="9" width="128" height="88"/>
     </elements>
 </model>

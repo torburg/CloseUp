@@ -7,23 +7,32 @@
 //
 
 import UIKit
+import CoreData
 
 class RecentViewController: UIView {
 
-    var contacts = [String]()
+    var contacts = [Contact]()
+
+    var fetchResultsController = CoreDataManager.instance.fetchResultsController(entityName: "Contact", keySort: "name")
     
     func setData() {
         
-        var contacts = [String]()
-        for i in 1...10 {
-            contacts.append("Contact \(i)")
+        do {
+            try fetchResultsController.performFetch()
+        } catch {
+            print(error)
         }
-        self.contacts = contacts
     }
 }
 extension RecentViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return contacts.count
+        if let sections = fetchResultsController.sections,
+            sections[section].numberOfObjects != 0 {
+            return sections[section].numberOfObjects
+        }
+
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -32,13 +41,29 @@ extension RecentViewController: UICollectionViewDataSource {
             print("Can't create reusable Cell")
             return dequedCell
         }
-        cell.label.text = contacts[indexPath.row]
-        cell.label.textColor = .white
-//        cell.contentView.backgroundColor = .white
-        cell.contentView.backgroundColor = UIColor(red: getColor(), green: getColor(), blue: getColor(), alpha: 1)
+        cell.label.textColor = .black
+        if validateIndexPath(indexPath) {
+            guard let contact = fetchResultsController.object(at: indexPath) as? Contact else {
+                print("Can't fetch object from FetchResultController by indexPath = \(indexPath)")
+                return cell
+            }
+            cell.label.text = contact.name!
+            cell.contentView.backgroundColor = UIColor(red: getColor(), green: getColor(), blue: getColor(), alpha: 1)
+            return cell
+        }
+        cell.label.text = "Create"
         return cell
     }
     
+    func validateIndexPath(_ indexPath: IndexPath) -> Bool {
+        if let sections = fetchResultsController.sections,
+        indexPath.section < sections.count {
+           if indexPath.row < sections[indexPath.section].numberOfObjects {
+              return true
+           }
+        }
+        return false
+    }
     
 }
 

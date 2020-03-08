@@ -49,6 +49,14 @@ class CoreDataManager {
         return container
     }()
 
+    func fetchResultsController(entityName: String, keySort: String) -> NSFetchedResultsController<NSFetchRequestResult>{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let sortDescriptor = NSSortDescriptor(key: keySort, ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultsController
+    }
+
     // MARK: - Core Data Saving support
 
     func saveContext () {

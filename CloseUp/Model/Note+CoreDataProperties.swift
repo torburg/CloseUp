@@ -2,7 +2,7 @@
 //  Note+CoreDataProperties.swift
 //  CloseUp
 //
-//  Created by Maksim Torburg on 06.03.2020.
+//  Created by Maksim Torburg on 08.03.2020.
 //  Copyright © 2020 Maksim Torburg. All rights reserved.
 //
 //
@@ -17,8 +17,8 @@ extension Note {
         return NSFetchRequest<Note>(entityName: "Note")
     }
 
-    @NSManaged public var label: String?
     @NSManaged public var content: String?
+    @NSManaged public var label: String?
     @NSManaged public var contact: Contact?
 
 }

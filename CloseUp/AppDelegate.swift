@@ -17,33 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(#function)
         
-        let dataManager = CoreDataManager.instance
-        let context = CoreDataManager.instance.context
-        
-        let managedObject = Contact()
-        managedObject.name = "New Name"
-        print(managedObject.name)
-
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-
-        dataManager.saveContext()
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
-        do {
-            let results = try context.fetch(fetchRequest)
-            
-            for result in results as! [Contact]{
-                print("Results = \(result.name)")
-                if result.value(forKey: "name") as? String == "1213131" {
-                    context.delete(result)
-                }
-            }
-        } catch {
-            print(error)
-        }
-        
-        dataManager.saveContext()
-        
         let rootViewController = MainViewController()
 //        let rootViewController = TestViewController()
 
@@ -78,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         print(#function)
+        CoreDataManager.instance.saveContext()
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }

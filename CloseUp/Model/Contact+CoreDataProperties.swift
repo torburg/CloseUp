@@ -2,7 +2,7 @@
 //  Contact+CoreDataProperties.swift
 //  CloseUp
 //
-//  Created by Maksim Torburg on 06.03.2020.
+//  Created by Maksim Torburg on 08.03.2020.
 //  Copyright © 2020 Maksim Torburg. All rights reserved.
 //
 //
@@ -18,6 +18,8 @@ extension Contact {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var createdDate: Date?
+    @NSManaged public var updatedDate: Date?
     @NSManaged public var note: NSSet?
 
 }

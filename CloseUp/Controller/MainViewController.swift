@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         collectionView.frame = contactView.frame
+        collectionView.backgroundColor = .white
         
         collectionView.delegate = recentViewController
         collectionView.dataSource = recentViewController
