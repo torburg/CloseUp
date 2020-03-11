@@ -15,7 +15,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var contactTable: UITableView!
 
     @IBOutlet weak var contactView: UIView!
-
+    @IBAction func addButtonPressed(_ sender: Any) {
+        let newContactViewController = CreateContactViewController()
+        self.present(newContactViewController, animated: true, completion: nil)
+    }
+    
     let recentViewController = RecentViewController()
     let tableController = ContactsViewController()
 

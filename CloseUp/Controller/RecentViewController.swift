@@ -13,7 +13,7 @@ class RecentViewController: UIView {
 
     var contacts = [Contact]()
 
-    var fetchResultsController = CoreDataManager.instance.fetchResultsController(entityName: "Contact", keySort: "name")
+    var fetchResultsController = CoreDataManager.instance.fetchResultsController(entityName: "Contact", keySort: "updatedDate")
     
     func setData() {
         
@@ -47,7 +47,7 @@ extension RecentViewController: UICollectionViewDataSource {
                 print("Can't fetch object from FetchResultController by indexPath = \(indexPath)")
                 return cell
             }
-            cell.label.text = contact.name!
+            cell.label.text = contact.name
             cell.contentView.backgroundColor = UIColor(red: getColor(), green: getColor(), blue: getColor(), alpha: 1)
             return cell
         }
