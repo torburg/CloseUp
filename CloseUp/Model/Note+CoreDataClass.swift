@@ -12,5 +12,7 @@ import CoreData
 
 @objc(Note)
 public class Note: NSManagedObject {
-
+    convenience init() {
+        self.init(entity: CoreDataManager.instance.getEntityByName("Note"), insertInto: CoreDataManager.instance.context)
+    }
 }

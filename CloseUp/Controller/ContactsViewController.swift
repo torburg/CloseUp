@@ -31,7 +31,6 @@ extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.contentView.backgroundColor = .blue
-        print(#function)
         return cell
     }
     
