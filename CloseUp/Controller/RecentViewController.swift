@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecentViewController: UIView {
+class RecentViewController: UIViewController {
 
     var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Contact",
                                                                                  sortBy: "updatedDate",

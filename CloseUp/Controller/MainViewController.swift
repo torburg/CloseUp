@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var contactTable: UITableView!
 
-    @IBOutlet weak var contactView: UIView!
+    @IBOutlet weak var contactView: UICollectionView!
 
     @IBAction func addButtonPress(_ sender: Any) {
         let newContactViewController = CreateContactViewController()
@@ -31,29 +31,28 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        print("Main viewDidLoad")
         super.viewDidLoad()
-        print(#function)
         initRecentViewController()
         initContactTableViewController()
         setView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        contactTable.reloadData()
+        recentViewController.setData()
+        contactView.reloadData()
+    }
+
     private func initRecentViewController() {
-        
-        // FIXME: All init shoulbe be in RecentVC, init needs Layout != nil
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        contactView.collectionViewLayout = collectionViewLayout
+
         let nib = UINib(nibName: "ContactCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "ContactCell")
-        view.addSubview(collectionView)
-        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        collectionView.frame = contactView.frame
-        collectionView.backgroundColor = .white
-        
-        collectionView.delegate = recentViewController
-        collectionView.dataSource = recentViewController
+        contactView.register(nib, forCellWithReuseIdentifier: "ContactCell")
+
+        contactView.delegate = recentViewController
+        contactView.dataSource = recentViewController
         recentViewController.setData()
     }
     
@@ -66,12 +65,6 @@ class MainViewController: UIViewController {
         let gradient = Background().gradient
         gradient.frame = view.bounds
         view.layer.insertSublayer(gradient, at: 0)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        print(#function)
-        contactTable.reloadData()
-        recentViewController.setData()
     }
 }
 

@@ -34,7 +34,6 @@ class CreateContactViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
             present(alertController, animated: true, completion: { print("empty")})
         } else {
-            print("else")
             let contact = Contact()
             contact.name = name.text!
             contact.createdDate = Date()
