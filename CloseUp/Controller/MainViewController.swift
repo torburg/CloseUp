@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var contactView: UIView!
 
-    @IBAction func addButtonPressed(_ sender: Any) {
+    @IBAction func addButtonPress(_ sender: Any) {
         let newContactViewController = CreateContactViewController()
         newContactViewController.modalPresentationStyle = .fullScreen
         self.present(newContactViewController, animated: true, completion: nil)
@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     let recentViewController = RecentViewController()
     let tableController = ContactsViewController()
 
-    @IBAction func infoButtonPressed(_ sender: UIButton) {
+    @IBAction func infoButtonPress(_ sender: UIButton) {
         let infoViewController = InfoViewController()
         self.present(infoViewController, animated: true, completion: nil)
     }
@@ -63,7 +63,6 @@ class MainViewController: UIViewController {
     }
 
     private func setView() {
-        
         let gradient = Background().gradient
         gradient.frame = view.bounds
         view.layer.insertSublayer(gradient, at: 0)

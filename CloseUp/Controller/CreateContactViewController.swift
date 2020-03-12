@@ -22,11 +22,11 @@ class CreateContactViewController: UIViewController {
         notesView.addSubview(textField)
     }
 
-    @IBAction func cancelButtonPressed(_ sender: Any) {
+    @IBAction func cancelButtonPress(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func createButtonPressed(_ sender: Any) {
+    @IBAction func createButtonPress(_ sender: Any) {
         // TODO: Save data to Database
         if let contactName = name.text,
             contactName.isEmpty {

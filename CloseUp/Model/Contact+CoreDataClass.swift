@@ -13,6 +13,6 @@ import CoreData
 @objc(Contact)
 public class Contact: NSManagedObject {
     convenience init() {
-        self.init(entity: CoreDataManager.instance.entityForName("Contact"), insertInto: CoreDataManager.instance.context)
+        self.init(entity: CoreDataManager.instance.getEntityByName("Contact"), insertInto: CoreDataManager.instance.context)
     }
 }

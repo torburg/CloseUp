@@ -11,13 +11,13 @@ import CoreData
 
 class RecentViewController: UIView {
 
-    var fetchResultsController = CoreDataManager.instance.fetchResultsController(entityName: "Contact",
+    var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Contact",
                                                                                  sortBy: "updatedDate",
                                                                                  sortDirectionAsc: false)
     
     func setData() {
         do {
-            try fetchResultsController.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             print(error)
         }
@@ -26,7 +26,7 @@ class RecentViewController: UIView {
 extension RecentViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let sections = fetchResultsController.sections,
+        if let sections = fetchedResultsController.sections,
             sections[section].numberOfObjects != 0 {
             return sections[section].numberOfObjects
         }
@@ -42,7 +42,7 @@ extension RecentViewController: UICollectionViewDataSource {
         }
         cell.label.textColor = .black
         if validateIndexPath(indexPath) {
-            guard let contact = fetchResultsController.object(at: indexPath) as? Contact else {
+            guard let contact = fetchedResultsController.object(at: indexPath) as? Contact else {
                 print("Can't fetch object from FetchResultController by indexPath = \(indexPath)")
                 return cell
             }
@@ -55,7 +55,7 @@ extension RecentViewController: UICollectionViewDataSource {
     }
     
     func validateIndexPath(_ indexPath: IndexPath) -> Bool {
-        if let sections = fetchResultsController.sections,
+        if let sections = fetchedResultsController.sections,
         indexPath.section < sections.count {
            if indexPath.row < sections[indexPath.section].numberOfObjects {
               return true

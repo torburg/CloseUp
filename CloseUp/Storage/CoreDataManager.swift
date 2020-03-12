@@ -21,7 +21,7 @@ class CoreDataManager {
         return persistentContainer.viewContext
     }
     
-    func entityForName(_ entityName: String) -> NSEntityDescription {
+    func getEntityByName(_ entityName: String) -> NSEntityDescription {
         return NSEntityDescription.entity(forEntityName: entityName, in: context)!
     }
     
@@ -53,17 +53,17 @@ class CoreDataManager {
         return container
     }()
 
-    func fetchResultsController(entityName: String, sortBy sortKey: String, sortDirectionAsc: Bool) -> NSFetchedResultsController<NSFetchRequestResult>{
+    func fetchedResultsController(entityName: String, sortBy sortKey: String, sortDirectionAsc: Bool) -> NSFetchedResultsController<NSFetchRequestResult>{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         let sortDescriptor = NSSortDescriptor(key: sortKey, ascending: sortDirectionAsc)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.context, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchResultsController
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
     }
 
     // MARK: - Core Data Saving support
 
-    func saveContext () {
+    func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()
