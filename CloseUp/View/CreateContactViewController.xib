@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateContactViewController" customModule="CloseUp" customModuleProvider="target">
             <connections>
+                <outlet property="name" destination="BdK-hv-V7c" id="Dtc-5e-mTr"/>
+                <outlet property="notesView" destination="4gs-JK-J3K" id="nHQ-Zb-TTY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,6 +36,9 @@
                     <state key="normal" title="Create">
                         <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <state key="disabled">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="ultraLight"/>
+                    </state>
                     <connections>
                         <action selector="createButtonPressed:" destination="-1" eventType="touchUpInside" id="mTa-dG-Wac"/>
                     </connections>
@@ -45,40 +50,62 @@
                         <constraint firstAttribute="height" constant="100" id="Mxb-hB-xWk"/>
                     </constraints>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xqz-8P-WeG" userLabel="Notes">
-                    <rect key="frame" x="20" y="266" width="374" height="439"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xqz-8P-WeG" userLabel="Notes">
+                    <rect key="frame" x="20" y="266" width="374" height="278"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="1it-uP-dP5"/>
+                        <outlet property="delegate" destination="-1" id="YjL-6I-nPK"/>
+                    </connections>
                 </tableView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="55D-Wu-42k">
-                    <rect key="frame" x="20" y="740" width="61" height="43"/>
+                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-hv-V7c" userLabel="Name">
+                    <rect key="frame" x="133" y="139" width="261" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAy-Ru-CpD">
-                    <rect key="frame" x="85" y="740" width="145" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Add Field"/>
-                </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="User Name" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c6o-Lr-P5T" userLabel="Name">
-                    <rect key="frame" x="127" y="139" width="235" height="36"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="235" id="Ine-3D-XfU"/>
-                        <constraint firstAttribute="height" constant="36" id="KvD-Zb-bqK"/>
-                    </constraints>
-                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="yW8-Xu-D51"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uOd-w7-yC0" userLabel="Description">
+                    <rect key="frame" x="133" y="181" width="261" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Rvz-rM-ImF"/>
+                    </connections>
+                </textField>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gs-JK-J3K">
+                    <rect key="frame" x="19" y="571" width="375" height="291"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAy-Ru-CpD">
+                            <rect key="frame" x="8" y="8" width="100" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="40" maxY="5"/>
+                            <state key="normal" title="Add Field" image="add">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="addFieldButton:" destination="-1" eventType="touchUpInside" id="lLt-ZC-ycm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="1du-4x-Eo7" firstAttribute="centerY" secondItem="up7-uD-DzQ" secondAttribute="centerY" id="68d-LT-5FD"/>
                 <constraint firstItem="up7-uD-DzQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="NXE-8z-w98"/>
-                <constraint firstItem="c6o-Lr-P5T" firstAttribute="leading" secondItem="Zfy-3K-MBm" secondAttribute="trailing" constant="8" id="PNu-tw-cIi"/>
                 <constraint firstItem="up7-uD-DzQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="19" id="fRr-KD-Q7m"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1du-4x-Eo7" secondAttribute="trailing" constant="20" id="fTv-CN-GC6"/>
-                <constraint firstItem="c6o-Lr-P5T" firstAttribute="top" secondItem="1du-4x-Eo7" secondAttribute="bottom" constant="35" id="kYA-bY-XeM"/>
                 <constraint firstItem="Zfy-3K-MBm" firstAttribute="top" secondItem="up7-uD-DzQ" secondAttribute="bottom" constant="35" id="mBm-5X-Dsy"/>
                 <constraint firstItem="Zfy-3K-MBm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="19" id="np2-hL-il0"/>
                 <constraint firstItem="1du-4x-Eo7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="pL1-BX-cgK"/>

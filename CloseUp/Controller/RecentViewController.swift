@@ -11,12 +11,11 @@ import CoreData
 
 class RecentViewController: UIView {
 
-    var contacts = [Contact]()
-
-    var fetchResultsController = CoreDataManager.instance.fetchResultsController(entityName: "Contact", keySort: "updatedDate")
+    var fetchResultsController = CoreDataManager.instance.fetchResultsController(entityName: "Contact",
+                                                                                 sortBy: "updatedDate",
+                                                                                 sortDirectionAsc: false)
     
     func setData() {
-        
         do {
             try fetchResultsController.performFetch()
         } catch {
