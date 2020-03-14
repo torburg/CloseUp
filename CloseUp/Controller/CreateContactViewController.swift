@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Contacts
+import ContactsUI
 
 class CreateContactViewController: UIViewController {
 
@@ -73,6 +75,23 @@ class CreateContactViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let contactAccessStatus = CNContactStore.authorizationStatus(for: .contacts)
+        switch contactAccessStatus {
+        case .authorized:
+            let contactPicker = CNContactPickerViewController()
+            contactPicker.delegate = self
+            present(contactPicker, animated: true)
+        case .notDetermined:
+            CNContactStore().requestAccess(for: .contacts) { access, error in
+                if let error = error {
+                    print(error)
+                }
+                print("Access \(access)")
+            }
+        default:
+            print("Not authorized")
+        }
         setView()
     }
 
@@ -90,5 +109,13 @@ extension CreateContactViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = UITableViewCell()
         cell.backgroundColor = .green
         return cell
+    }
+}
+
+extension CreateContactViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        let name = contact.givenName
+        self.name.text = name
+        dismiss(animated: true, completion: nil)
     }
 }

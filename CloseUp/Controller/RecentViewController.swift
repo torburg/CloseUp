@@ -63,7 +63,6 @@ extension RecentViewController: UICollectionViewDataSource {
         }
         return false
     }
-    
 }
 
 extension RecentViewController: UICollectionViewDelegateFlowLayout {
