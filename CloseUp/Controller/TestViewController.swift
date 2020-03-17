@@ -38,9 +38,6 @@ extension TestViewController: UICollectionViewDataSource {
             print("Can't create reusable Cell")
             return dequedCell
         }
-        cell.label.text = "\(indexPath)"
-        cell.label.textColor = .white
-//        cell.contentView.backgroundColor = .white
         cell.contentView.backgroundColor = UIColor(red: getColor(), green: getColor(), blue: getColor(), alpha: 1)
         return cell
     }

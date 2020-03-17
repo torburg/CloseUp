@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecentViewController: UIViewController {
+class RecentViewController: UICollectionViewController {
 
     var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Contact",
                                                                                  sortBy: "updatedDate",
@@ -23,9 +23,9 @@ class RecentViewController: UIViewController {
         }
     }
 }
-extension RecentViewController: UICollectionViewDataSource {
+extension RecentViewController {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections,
             sections[section].numberOfObjects != 0 {
             return sections[section].numberOfObjects
@@ -34,23 +34,24 @@ extension RecentViewController: UICollectionViewDataSource {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let dequedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let dequedCell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactCell.reuseIdentifier, for: indexPath)
         guard let cell = dequedCell as? ContactCell else {
             print("Can't create reusable Cell")
             return dequedCell
         }
-        cell.label.textColor = .black
         if validateIndexPath(indexPath) {
             guard let contact = fetchedResultsController.object(at: indexPath) as? Contact else {
                 print("Can't fetch object from FetchResultController by indexPath = \(indexPath)")
                 return cell
             }
-            cell.label.text = contact.name
-            cell.contentView.backgroundColor = UIColor(red: getColor(), green: getColor(), blue: getColor(), alpha: 1)
+            cell.fillData(with: contact)
             return cell
         }
-        cell.label.text = "Create"
+        let label = UILabel(frame: cell.frame)
+        label.text = "Create"
+        label.textAlignment = .center
+        cell.addSubview(label)
         return cell
     }
     
