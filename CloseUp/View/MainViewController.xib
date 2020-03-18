@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,9 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="CloseUp" customModuleProvider="target">
             <connections>
-                <outlet property="contactTable" destination="z5v-kd-ucU" id="Dhb-XV-yai"/>
-                <outlet property="contactView" destination="59r-uC-0ZX" id="Jam-05-tNY"/>
+                <outlet property="contactList" destination="z5v-kd-ucU" id="Dhb-XV-yai"/>
                 <outlet property="greeting" destination="v0N-4Y-TgY" id="iyb-mW-0z6"/>
+                <outlet property="recentContacts" destination="59r-uC-0ZX" id="Jam-05-tNY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

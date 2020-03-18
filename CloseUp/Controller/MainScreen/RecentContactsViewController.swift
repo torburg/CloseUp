@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecentViewController: UICollectionViewController {
+class RecentContactsViewController: UICollectionViewController {
 
     var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Contact",
                                                                                  sortBy: "updatedDate",
@@ -23,7 +23,7 @@ class RecentViewController: UICollectionViewController {
         }
     }
 }
-extension RecentViewController {
+extension RecentContactsViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections,
@@ -35,8 +35,8 @@ extension RecentViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let dequedCell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactCell.reuseIdentifier, for: indexPath)
-        guard let cell = dequedCell as? ContactCell else {
+        let dequedCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentContactCell.reuseIdentifier, for: indexPath)
+        guard let cell = dequedCell as? RecentContactCell else {
             print("Can't create reusable Cell")
             return dequedCell
         }
@@ -67,7 +67,7 @@ extension RecentViewController {
     }
 }
 
-extension RecentViewController: UICollectionViewDelegateFlowLayout {
+extension RecentContactsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 70.0, height: 70.0)
     }

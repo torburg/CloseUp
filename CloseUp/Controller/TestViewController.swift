@@ -34,7 +34,7 @@ extension TestViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dequedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath)
-        guard let cell = dequedCell as? ContactCell else {
+        guard let cell = dequedCell as? RecentContactCell else {
             print("Can't create reusable Cell")
             return dequedCell
         }

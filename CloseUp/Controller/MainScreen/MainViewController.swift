@@ -12,9 +12,9 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var greeting: UILabel!
 
-    @IBOutlet weak var contactTable: UITableView!
+    @IBOutlet weak var contactList: UITableView!
 
-    @IBOutlet weak var contactView: UICollectionView!
+    @IBOutlet weak var recentContacts: UICollectionView!
 
     @IBAction func addButtonPress(_ sender: Any) {
         let newContactViewController = CreateContactViewController()
@@ -22,8 +22,8 @@ class MainViewController: UIViewController {
         self.present(newContactViewController, animated: true, completion: nil)
     }
     
-    let recentViewController = RecentViewController()
-    let tableController = ContactsViewController()
+    let recentContactsViewController = RecentContactsViewController()
+    let contactListViewController = ContactListViewController()
 
     @IBAction func infoButtonPress(_ sender: UIButton) {
         let infoViewController = InfoViewController()
@@ -38,32 +38,32 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableController.setData()
-        contactTable.reloadData()
-        recentViewController.setData()
-        contactView.reloadData()
+        contactListViewController.setData()
+        contactList.reloadData()
+        recentContactsViewController.setData()
+        recentContacts.reloadData()
     }
 
     private func initRecentViewController() {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        contactView.collectionViewLayout = collectionViewLayout
+        recentContacts.collectionViewLayout = collectionViewLayout
 
-        let nib = UINib(nibName: "ContactCell", bundle: nil)
-        contactView.register(nib, forCellWithReuseIdentifier: "ContactCell")
+        let nib = UINib(nibName: "RecentContactCell", bundle: nil)
+        recentContacts.register(nib, forCellWithReuseIdentifier: RecentContactCell.reuseIdentifier)
 
-        contactView.delegate = recentViewController
-        contactView.dataSource = recentViewController
-        recentViewController.setData()
+        recentContacts.delegate = recentContactsViewController
+        recentContacts.dataSource = recentContactsViewController
+        recentContactsViewController.setData()
     }
     
     private func initContactTableViewController() {
-        let nib = UINib(nibName: "TableCell", bundle: nil)
-        contactTable.register(nib, forCellReuseIdentifier: TableCell.reuseIdentifier)
+        let nib = UINib(nibName: "ContactListCell", bundle: nil)
+        contactList.register(nib, forCellReuseIdentifier: ContactListCell.reuseIdentifier)
 
-        contactTable.delegate = tableController
-        contactTable.dataSource = tableController
-        tableController.setData()
+        contactList.delegate = contactListViewController
+        contactList.dataSource = contactListViewController
+        contactListViewController.setData()
     }
 
     private func setView() {

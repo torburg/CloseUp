@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactsViewController: NSObject, UITableViewDelegate {
+class ContactListViewController: NSObject, UITableViewDelegate {
 
     var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Contact",
                                                                                  sortBy: "name",
@@ -27,7 +27,7 @@ class ContactsViewController: NSObject, UITableViewDelegate {
     }
 }
 
-extension ContactsViewController: UITableViewDataSource {
+extension ContactListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections else {
@@ -37,8 +37,8 @@ extension ContactsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let dequedCell = tableView.dequeueReusableCell(withIdentifier: TableCell.reuseIdentifier, for: indexPath)
-        guard let cell = dequedCell as? TableCell else {
+        let dequedCell = tableView.dequeueReusableCell(withIdentifier: ContactListCell.reuseIdentifier, for: indexPath)
+        guard let cell = dequedCell as? ContactListCell else {
             print("Can't create reusable Cell in TableView")
             return dequedCell
         }

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TableCell: UITableViewCell {
+class ContactListCell: UITableViewCell {
     
-    static let reuseIdentifier = "TableCell"
+    static let reuseIdentifier = "ContactListCell"
     
     let avatar = UIImageView()
     let name = UILabel()

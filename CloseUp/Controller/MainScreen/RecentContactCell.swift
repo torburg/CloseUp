@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ContactCell: UICollectionViewCell {
+class RecentContactCell: UICollectionViewCell {
 
     var avatar = UIImageView()
 
     var name = UILabel()
 
-    static let reuseIdentifier = "ContactCell"
+    static let reuseIdentifier = "RecentContactCell"
 
     func fillData(with contact: Contact) {
 
