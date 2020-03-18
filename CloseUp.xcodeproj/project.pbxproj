@@ -27,6 +27,8 @@
 		884BB46124125DCB0019C841 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB46024125DCB0019C841 /* CoreDataManager.swift */; };
 		884BB4752415740F0019C841 /* CreateContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB4732415740F0019C841 /* CreateContactViewController.swift */; };
 		884BB4762415740F0019C841 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884BB4742415740F0019C841 /* CreateContactViewController.xib */; };
+		884C804F2422A3AD009D2D36 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C804D2422A3AD009D2D36 /* TableCell.swift */; };
+		884C80502422A3AD009D2D36 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884C804E2422A3AD009D2D36 /* TableCell.xib */; };
 		884F0A58241990B500958B4B /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A54241990B500958B4B /* Note+CoreDataClass.swift */; };
 		884F0A59241990B500958B4B /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A55241990B500958B4B /* Note+CoreDataProperties.swift */; };
 		884F0A5A241990B500958B4B /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A56241990B500958B4B /* Contact+CoreDataClass.swift */; };
@@ -55,6 +57,8 @@
 		884BB46024125DCB0019C841 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		884BB4732415740F0019C841 /* CreateContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactViewController.swift; sourceTree = "<group>"; };
 		884BB4742415740F0019C841 /* CreateContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateContactViewController.xib; sourceTree = "<group>"; };
+		884C804D2422A3AD009D2D36 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		884C804E2422A3AD009D2D36 /* TableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		884F0A54241990B500958B4B /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884F0A55241990B500958B4B /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		884F0A56241990B500958B4B /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		884BB439240D98390019C841 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				884C804E2422A3AD009D2D36 /* TableCell.xib */,
 				884F0A6A241D4B3A00958B4B /* ContactCell.xib */,
 				884BB43B240D986B0019C841 /* Helpers.swift */,
 				884BB4742415740F0019C841 /* CreateContactViewController.xib */,
@@ -136,6 +141,7 @@
 				884BB4732415740F0019C841 /* CreateContactViewController.swift */,
 				884BB44B240E78320019C841 /* TestViewController.swift */,
 				884BB451240E7BDF0019C841 /* ContactCell.swift */,
+				884C804D2422A3AD009D2D36 /* TableCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				884BB430240D80760019C841 /* MainViewController.xib in Resources */,
 				884BB4762415740F0019C841 /* CreateContactViewController.xib in Resources */,
 				884F0A6B241D4B3A00958B4B /* ContactCell.xib in Resources */,
+				884C80502422A3AD009D2D36 /* TableCell.xib in Resources */,
 				884BB413240D457A0019C841 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +281,7 @@
 				884BB42F240D80760019C841 /* MainViewController.swift in Sources */,
 				884BB43E240D98810019C841 /* ViewClasses.swift in Sources */,
 				884BB434240D89380019C841 /* InfoViewController.swift in Sources */,
+				884C804F2422A3AD009D2D36 /* TableCell.swift in Sources */,
 				884BB46124125DCB0019C841 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

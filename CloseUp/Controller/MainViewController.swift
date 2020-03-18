@@ -38,6 +38,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableController.setData()
         contactTable.reloadData()
         recentViewController.setData()
         contactView.reloadData()
@@ -57,8 +58,12 @@ class MainViewController: UIViewController {
     }
     
     private func initContactTableViewController() {
+        let nib = UINib(nibName: "TableCell", bundle: nil)
+        contactTable.register(nib, forCellReuseIdentifier: TableCell.reuseIdentifier)
+
         contactTable.delegate = tableController
         contactTable.dataSource = tableController
+        tableController.setData()
     }
 
     private func setView() {

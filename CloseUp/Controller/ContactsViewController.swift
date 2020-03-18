@@ -10,28 +10,43 @@ import UIKit
 
 class ContactsViewController: NSObject, UITableViewDelegate {
 
-    /*
-    // MARK: - Navigation
+    var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Contact",
+                                                                                 sortBy: "name",
+                                                                                 sortDirectionAsc: true)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setData() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print(error)
+        }
     }
-    */
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
 }
 
 extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        return sections[section].numberOfObjects
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.contentView.backgroundColor = .blue
+        let dequedCell = tableView.dequeueReusableCell(withIdentifier: TableCell.reuseIdentifier, for: indexPath)
+        guard let cell = dequedCell as? TableCell else {
+            print("Can't create reusable Cell in TableView")
+            return dequedCell
+        }
+        guard let contact = fetchedResultsController.object(at: indexPath) as? Contact else {
+            print("Can't fetch object from FetchResultController by indexPath = \(indexPath)")
+            return cell
+        }
+        cell.fillData(with: contact)
         return cell
     }
-    
 }
