@@ -9,6 +9,8 @@
 import UIKit
 
 class InfoViewController: UIViewController {
+
+    let appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     @objc func dismiss(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -28,25 +30,22 @@ class InfoViewController: UIViewController {
         let backButton = UIButton()
         backButton.setTitle("Back", for: .normal)
         backButton.addTarget(self, action: #selector(dismiss), for: .touchUpInside)
-        
-        view.addSubview(backButton)
-        
         backButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backButton)
+
+        let versionLabel = UILabel()
+        versionLabel.text = "App version: \(appVersion ?? "Unknown")"
+        versionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(versionLabel)
+
         let constraints = [
             backButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+            versionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            versionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: backButton.topAnchor, constant: -20),
+            versionLabel.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 20)
         ]
         NSLayoutConstraint.activate(constraints)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
