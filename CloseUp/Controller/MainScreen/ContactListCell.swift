@@ -17,6 +17,7 @@ class ContactListCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .clear
         // Initialization code
     }
 
@@ -40,7 +41,8 @@ class ContactListCell: UITableViewCell {
         self.addSubview(avatar)
 
         name.text = contact.name
-        name.font = .systemFont(ofSize: 16)
+        name.font = .systemFont(ofSize: 18, weight: .bold)
+        name.textColor = .white
         name.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(name)
 

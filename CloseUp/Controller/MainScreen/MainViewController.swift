@@ -70,6 +70,9 @@ class MainViewController: UIViewController {
         let gradient = Background().gradient
         gradient.frame = view.bounds
         view.layer.insertSublayer(gradient, at: 0)
+
+        contactList.backgroundColor = .clear
+        recentContacts.backgroundColor = .clear
     }
 }
 

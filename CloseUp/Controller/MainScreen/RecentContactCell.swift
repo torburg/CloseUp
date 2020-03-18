@@ -29,7 +29,8 @@ class RecentContactCell: UICollectionViewCell {
         self.addSubview(avatar)
 
         name.text = contact.name
-        name.font = .systemFont(ofSize: 12.5)
+        name.font = .systemFont(ofSize: 14.5)
+        name.textColor = .white
         name.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(name)
 
