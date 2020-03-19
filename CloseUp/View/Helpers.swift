@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import  UIKit
+
+func setBackgroubd(for sender: UIView) {
+    let gradient = Background().gradient
+    gradient.frame = sender.bounds
+    sender.layer.insertSublayer(gradient, at: 0)
+
+    sender.backgroundColor = .clear
+    sender.backgroundColor = .clear
+}

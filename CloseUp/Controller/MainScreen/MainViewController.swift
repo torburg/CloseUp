@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         initRecentViewController()
         initContactTableViewController()
-        setView()
+        setBackgroubd(for: self.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,15 +64,6 @@ class MainViewController: UIViewController {
         contactList.delegate = contactListViewController
         contactList.dataSource = contactListViewController
         contactListViewController.setData()
-    }
-
-    private func setView() {
-        let gradient = Background().gradient
-        gradient.frame = view.bounds
-        view.layer.insertSublayer(gradient, at: 0)
-
-        contactList.backgroundColor = .clear
-        recentContacts.backgroundColor = .clear
     }
 }
 
