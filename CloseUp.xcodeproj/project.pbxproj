@@ -17,7 +17,6 @@
 		884BB426240D45830019C841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884BB412240D457A0019C841 /* Assets.xcassets */; };
 		884BB42F240D80760019C841 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB42D240D80760019C841 /* MainViewController.swift */; };
 		884BB430240D80760019C841 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884BB42E240D80760019C841 /* MainViewController.xib */; };
-		884BB432240D81CC0019C841 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB431240D81CC0019C841 /* ContactListViewController.swift */; };
 		884BB434240D89380019C841 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB433240D89380019C841 /* InfoViewController.swift */; };
 		884BB43C240D986B0019C841 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB43B240D986B0019C841 /* Helpers.swift */; };
 		884BB43E240D98810019C841 /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB43D240D98810019C841 /* ViewClasses.swift */; };
@@ -47,7 +46,6 @@
 		884BB42C240D45830019C841 /* CloseUp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CloseUp copy-Info.plist"; path = "/Users/maksimtorburg/Docs/Swift/CloseUp/CloseUp copy-Info.plist"; sourceTree = "<absolute>"; };
 		884BB42D240D80760019C841 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		884BB42E240D80760019C841 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		884BB431240D81CC0019C841 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		884BB433240D89380019C841 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		884BB43B240D986B0019C841 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		884BB43D240D98810019C841 /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				884BB42D240D80760019C841 /* MainViewController.swift */,
-				884BB431240D81CC0019C841 /* ContactListViewController.swift */,
 				884BB453240E87C40019C841 /* RecentContactsViewController.swift */,
 				884BB451240E7BDF0019C841 /* RecentContactCell.swift */,
 				884C804D2422A3AD009D2D36 /* ContactListCell.swift */,
@@ -291,7 +288,6 @@
 				884BB407240D45770019C841 /* AppDelegate.swift in Sources */,
 				884BB43C240D986B0019C841 /* Helpers.swift in Sources */,
 				884BB44D240E78320019C841 /* TestViewController.swift in Sources */,
-				884BB432240D81CC0019C841 /* ContactListViewController.swift in Sources */,
 				884F0A58241990B500958B4B /* Note+CoreDataClass.swift in Sources */,
 				884BB411240D45770019C841 /* CloseUp.xcdatamodeld in Sources */,
 				884BB42F240D80760019C841 /* MainViewController.swift in Sources */,

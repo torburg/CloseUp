@@ -15,5 +15,4 @@ func setBackgroubd(for sender: UIView) {
     sender.layer.insertSublayer(gradient, at: 0)
 
     sender.backgroundColor = .clear
-    sender.backgroundColor = .clear
 }
