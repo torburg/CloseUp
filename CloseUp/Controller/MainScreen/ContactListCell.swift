@@ -1,5 +1,5 @@
 //
-//  TableCell.swift
+//  ContactListCell.swift
 //  CloseUp
 //
 //  Created by Maksim Torburg on 18.03.2020.

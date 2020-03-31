@@ -14,8 +14,8 @@ class Background {
     let gradient = CAGradientLayer()
     
     init() {
-        let topColor = UIColor(red: 68.0 / 255.0, green: 168.0 / 255.0, blue: 238.0 / 255.0, alpha: 1)
-        let bottomColor = UIColor(red: 168.0 / 255.0, green: 178.0 / 255.0, blue: 200.0 / 255.0, alpha: 1)
+        let topColor = UIColor(red: 4.0 / 255.0, green: 200.0 / 255.0, blue: 223.0 / 255.0, alpha: 1)
+        let bottomColor = UIColor(red: 55 / 255.0, green: 113.0 / 255.0, blue: 209.0 / 255.0, alpha: 1)
         gradient.colors = [topColor.cgColor, bottomColor.cgColor]
     }
 }
