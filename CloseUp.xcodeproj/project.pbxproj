@@ -27,12 +27,10 @@
 		884BB4752415740F0019C841 /* CreateContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB4732415740F0019C841 /* CreateContactViewController.swift */; };
 		884BB4762415740F0019C841 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884BB4742415740F0019C841 /* CreateContactViewController.xib */; };
 		884C804F2422A3AD009D2D36 /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C804D2422A3AD009D2D36 /* ContactListCell.swift */; };
-		884C80502422A3AD009D2D36 /* ContactListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884C804E2422A3AD009D2D36 /* ContactListCell.xib */; };
 		884F0A58241990B500958B4B /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A54241990B500958B4B /* Note+CoreDataClass.swift */; };
 		884F0A59241990B500958B4B /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A55241990B500958B4B /* Note+CoreDataProperties.swift */; };
 		884F0A5A241990B500958B4B /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A56241990B500958B4B /* Contact+CoreDataClass.swift */; };
 		884F0A5B241990B500958B4B /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A57241990B500958B4B /* Contact+CoreDataProperties.swift */; };
-		884F0A6B241D4B3A00958B4B /* RecentContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884F0A6A241D4B3A00958B4B /* RecentContactCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,12 +54,10 @@
 		884BB4732415740F0019C841 /* CreateContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactViewController.swift; sourceTree = "<group>"; };
 		884BB4742415740F0019C841 /* CreateContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateContactViewController.xib; sourceTree = "<group>"; };
 		884C804D2422A3AD009D2D36 /* ContactListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
-		884C804E2422A3AD009D2D36 /* ContactListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListCell.xib; sourceTree = "<group>"; };
 		884F0A54241990B500958B4B /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884F0A55241990B500958B4B /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		884F0A56241990B500958B4B /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884F0A57241990B500958B4B /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		884F0A6A241D4B3A00958B4B /* RecentContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentContactCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +115,6 @@
 		884BB439240D98390019C841 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				884C80522422C7C2009D2D36 /* Cells */,
 				884BB43B240D986B0019C841 /* Helpers.swift */,
 				884BB4742415740F0019C841 /* CreateContactViewController.xib */,
 				884BB43D240D98810019C841 /* ViewClasses.swift */,
@@ -167,15 +162,6 @@
 				884C804D2422A3AD009D2D36 /* ContactListCell.swift */,
 			);
 			path = MainScreen;
-			sourceTree = "<group>";
-		};
-		884C80522422C7C2009D2D36 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				884C804E2422A3AD009D2D36 /* ContactListCell.xib */,
-				884F0A6A241D4B3A00958B4B /* RecentContactCell.xib */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +243,6 @@
 				884BB416240D457A0019C841 /* LaunchScreen.storyboard in Resources */,
 				884BB430240D80760019C841 /* MainViewController.xib in Resources */,
 				884BB4762415740F0019C841 /* CreateContactViewController.xib in Resources */,
-				884F0A6B241D4B3A00958B4B /* RecentContactCell.xib in Resources */,
-				884C80502422A3AD009D2D36 /* ContactListCell.xib in Resources */,
 				884BB413240D457A0019C841 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

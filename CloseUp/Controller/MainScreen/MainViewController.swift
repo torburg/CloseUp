@@ -12,9 +12,11 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var greeting: UILabel!
 
-    @IBOutlet weak var contactList: UITableView!
+    @IBOutlet weak var contactList: UICollectionView!
 
     @IBOutlet weak var recentContacts: UICollectionView!
+
+    @IBOutlet weak var addButton: UIButton!
 
     @IBAction func addButtonPress(_ sender: Any) {
         let newContactViewController = CreateContactViewController()
@@ -33,6 +35,9 @@ class MainViewController: UIViewController {
                                                                                  sortBy: "name",
                                                                                  sortDirectionAsc: true)
 
+    private var chosenLayout = currentLayout.onePerRow
+    let minimumSpaceBetweenItems = CGFloat(20)
+
     @IBAction func infoButtonPress(_ sender: UIButton) {
         let infoViewController = InfoViewController()
         self.present(infoViewController, animated: true, completion: nil)
@@ -41,7 +46,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initRecentViewController()
-        initContactTableViewController()
+        initContactList()
+        addButton.layer.zPosition = 1
 
         setBackgroubd(for: self.view)
     }
@@ -61,20 +67,17 @@ class MainViewController: UIViewController {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         recentContacts.collectionViewLayout = collectionViewLayout
-        recentContacts.backgroundColor = .clear
+        recentContacts.layer.cornerRadius = 20
 
-        let nib = UINib(nibName: "RecentContactCell", bundle: nil)
-        recentContacts.register(nib, forCellWithReuseIdentifier: RecentContactCell.reuseIdentifier)
+        recentContacts.register(RecentContactCell.self, forCellWithReuseIdentifier: RecentContactCell.reuseIdentifier)
 
         recentContacts.delegate = recentContactsViewController
         recentContacts.dataSource = recentContactsViewController
     }
     
-    private func initContactTableViewController() {
-        let nib = UINib(nibName: "ContactListCell", bundle: nil)
-        contactList.register(nib, forCellReuseIdentifier: ContactListCell.reuseIdentifier)
+    private func initContactList() {
+        contactList.register(ContactListCell.self, forCellWithReuseIdentifier: ContactListCell.reuseIdentifier)
         contactList.backgroundColor = .clear
-
         searchController = {
             let controller = UISearchController(searchResultsController: nil)
             controller.searchBar.sizeToFit()
@@ -82,31 +85,24 @@ class MainViewController: UIViewController {
             controller.searchResultsUpdater = self
             definesPresentationContext = true
 
-            contactList.tableHeaderView = controller.searchBar
+//            contactList.tableHeaderView = controller.searchBar
 
             return controller
         }()
-
-        contactList.delegate = self
-        contactList.dataSource = self
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections else {
             return 0
         }
         return sections[section].numberOfObjects
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let dequedCell = tableView.dequeueReusableCell(withIdentifier: ContactListCell.reuseIdentifier, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let dequedCell = contactList.dequeueReusableCell(withReuseIdentifier: ContactListCell.reuseIdentifier, for: indexPath)
         guard let cell = dequedCell as? ContactListCell else {
             print("Can't create reusable Cell in TableView")
             return dequedCell
@@ -117,6 +113,25 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.fillData(with: contact)
         return cell
+    }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var itemPerRow: Int?
+        switch chosenLayout {
+        case .onePerRow:
+            itemPerRow = 1
+        case .twoPerRow:
+            itemPerRow = 2
+        }
+        let itemWidth = collectionView.frame.width / CGFloat(itemPerRow ?? 1)
+        let itemSize = CGSize(width: itemWidth, height: 70)
+        return itemSize
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumSpaceBetweenItems
     }
 }
 
@@ -147,5 +162,10 @@ extension MainViewController: UISearchResultsUpdating {
             }
             contactList.reloadData()
         }
+    }
+
+    private enum currentLayout {
+        case twoPerRow
+        case onePerRow
     }
 }

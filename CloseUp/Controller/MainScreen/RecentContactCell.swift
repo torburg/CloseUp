@@ -25,12 +25,11 @@ class RecentContactCell: UICollectionViewCell {
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.clipsToBounds = true
         // FIXME: Fix to computed size of parent view to make corenrRadius round
-        avatar.layer.cornerRadius = 25
+        avatar.layer.cornerRadius = self.frame.height * 0.8 / 2
         self.addSubview(avatar)
 
         name.text = contact.name
         name.font = .systemFont(ofSize: 14.5)
-        name.textColor = .white
         name.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(name)
 
