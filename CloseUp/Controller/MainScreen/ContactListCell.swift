@@ -44,8 +44,8 @@ class ContactListCell: UICollectionViewCell {
             avatar.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
 
             name.centerYAnchor.constraint(equalTo: avatar.centerYAnchor),
-            name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 50),
-            name.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 30),
+            name.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -10),
+            name.leadingAnchor.constraint(greaterThanOrEqualTo: avatar.trailingAnchor, constant: 5),
         ]
 
         NSLayoutConstraint.activate(constraints)

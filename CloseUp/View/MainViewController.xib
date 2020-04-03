@@ -13,6 +13,7 @@
                 <outlet property="addButton" destination="s8T-Wh-mqv" id="MCq-8O-yc4"/>
                 <outlet property="contactList" destination="ELC-7q-MAL" id="M5N-Nc-dp8"/>
                 <outlet property="greeting" destination="v0N-4Y-TgY" id="iyb-mW-0z6"/>
+                <outlet property="layoutButton" destination="eIX-UK-Nc8" id="mBc-2m-ITM"/>
                 <outlet property="recentContacts" destination="59r-uC-0ZX" id="Jam-05-tNY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7j-A0-B3b">
-                    <rect key="frame" x="28" y="48" width="46" height="38"/>
+                    <rect key="frame" x="20" y="44" width="46" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <state key="normal" title="Info">
@@ -34,7 +35,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3B4-PG-3hk">
-                    <rect key="frame" x="343" y="44" width="57" height="30"/>
+                    <rect key="frame" x="337" y="44" width="57" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Settings">
                         <color key="titleColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,6 +55,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8T-Wh-mqv" userLabel="Add">
+                    <rect key="frame" x="297" y="793" width="74" height="69"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="plus"/>
+                    <connections>
+                        <action selector="addButtonPress:" destination="-1" eventType="touchUpInside" id="WHl-5f-WI8"/>
+                    </connections>
+                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="59r-uC-0ZX">
                     <rect key="frame" x="20" y="225" width="374" height="108"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -80,12 +89,12 @@
                         <outlet property="delegate" destination="-1" id="S98-qL-poW"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8T-Wh-mqv" userLabel="Add">
-                    <rect key="frame" x="297" y="793" width="74" height="69"/>
+                <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIX-UK-Nc8" userLabel="Layout Button">
+                    <rect key="frame" x="20" y="105" width="54" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="plus"/>
+                    <state key="normal" title="Button"/>
                     <connections>
-                        <action selector="addButtonPress:" destination="-1" eventType="touchUpInside" id="WHl-5f-WI8"/>
+                        <action selector="layoutSetButtonPressed:" destination="-1" eventType="touchUpInside" id="frf-3C-hsE"/>
                     </connections>
                 </button>
             </subviews>
