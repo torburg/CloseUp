@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880DA03C243905B8003AD935 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880DA03B243905B8003AD935 /* MainViewPresenter.swift */; };
 		884BB407240D45770019C841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB406240D45770019C841 /* AppDelegate.swift */; };
 		884BB411240D45770019C841 /* CloseUp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 884BB40F240D45770019C841 /* CloseUp.xcdatamodeld */; };
 		884BB413240D457A0019C841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884BB412240D457A0019C841 /* Assets.xcassets */; };
@@ -31,9 +32,11 @@
 		884F0A59241990B500958B4B /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A55241990B500958B4B /* Note+CoreDataProperties.swift */; };
 		884F0A5A241990B500958B4B /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A56241990B500958B4B /* Contact+CoreDataClass.swift */; };
 		884F0A5B241990B500958B4B /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884F0A57241990B500958B4B /* Contact+CoreDataProperties.swift */; };
+		88C92E852439466300335A51 /* MainViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C92E842439466300335A51 /* MainViewConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		880DA03B243905B8003AD935 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
 		884BB403240D45770019C841 /* CloseUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloseUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		884BB406240D45770019C841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		884BB410240D45770019C841 /* CloseUp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CloseUp.xcdatamodel; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		884F0A55241990B500958B4B /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		884F0A56241990B500958B4B /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884F0A57241990B500958B4B /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88C92E842439466300335A51 /* MainViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				884BB42D240D80760019C841 /* MainViewController.swift */,
+				88C92E842439466300335A51 /* MainViewConfigurator.swift */,
+				880DA03B243905B8003AD935 /* MainViewPresenter.swift */,
 				884BB453240E87C40019C841 /* RecentContactsViewController.swift */,
 				884BB451240E7BDF0019C841 /* RecentContactCell.swift */,
 				884C804D2422A3AD009D2D36 /* ContactListCell.swift */,
@@ -273,10 +279,12 @@
 				884BB43C240D986B0019C841 /* Helpers.swift in Sources */,
 				884BB44D240E78320019C841 /* TestViewController.swift in Sources */,
 				884F0A58241990B500958B4B /* Note+CoreDataClass.swift in Sources */,
+				88C92E852439466300335A51 /* MainViewConfigurator.swift in Sources */,
 				884BB411240D45770019C841 /* CloseUp.xcdatamodeld in Sources */,
 				884BB42F240D80760019C841 /* MainViewController.swift in Sources */,
 				884BB43E240D98810019C841 /* ViewClasses.swift in Sources */,
 				884BB434240D89380019C841 /* InfoViewController.swift in Sources */,
+				880DA03C243905B8003AD935 /* MainViewPresenter.swift in Sources */,
 				884C804F2422A3AD009D2D36 /* ContactListCell.swift in Sources */,
 				884BB46124125DCB0019C841 /* CoreDataManager.swift in Sources */,
 			);

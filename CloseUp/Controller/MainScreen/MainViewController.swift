@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MainView {
 
     @IBOutlet weak var greeting: UILabel!
 
@@ -20,17 +20,17 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var addButton: UIButton!
 
+    var configurator = MainViewConfiguratorImplementation()
+    var presenter: MainViewPresenter!
+
     let recentContactsViewController = RecentContactsViewController()
-    var searchController = UISearchController()
-    var isSearchBarEmpty: Bool {
-      return searchController.searchBar.text?.isEmpty ?? true
-    }
-    var isFiltering: Bool {
-        return searchController.isActive && !isSearchBarEmpty
-    }
-    var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Contact",
-                                                                                 sortBy: "name",
-                                                                                 sortDirectionAsc: true)
+//    var searchController = UISearchController()
+//    var isSearchBarEmpty: Bool {
+//      return searchController.searchBar.text?.isEmpty ?? true
+//    }
+//    var isFiltering: Bool {
+//        return searchController.isActive && !isSearchBarEmpty
+//    }
 
     private var currentLayout = CurrentLayout.onePerRow
 
@@ -115,12 +115,19 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayoutSettingView()
-        initRecentViewController()
-        initContactList()
-        view.bringSubviewToFront(addButton)
 
-        setBackground(for: self.view)
+        configurator.configure(viewController: self)
+        presenter.viewDidLoad()
+    }
+
+    func initContactList() {
+        contactList.register(ContactListCell.self, forCellWithReuseIdentifier: ContactListCell.reuseIdentifier)
+        contactList.backgroundColor = .clear
+        contactList.showsVerticalScrollIndicator = false
+    }
+
+    func setMainViewBackground() {
+        setBackground(for: self)
     }
 
     func setLayoutSettingView() {
@@ -134,17 +141,13 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print(error)
-        }
+        presenter.viewWillAppear()
         contactList.reloadData()
         recentContactsViewController.setData()
         recentContacts.reloadData()
     }
 
-    private func initRecentViewController() {
+    func initRecentViewController() {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         recentContacts.collectionViewLayout = collectionViewLayout
@@ -155,32 +158,12 @@ class MainViewController: UIViewController {
         recentContacts.delegate = recentContactsViewController
         recentContacts.dataSource = recentContactsViewController
     }
-    
-    private func initContactList() {
-        contactList.register(ContactListCell.self, forCellWithReuseIdentifier: ContactListCell.reuseIdentifier)
-        contactList.backgroundColor = .clear
-        searchController = {
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchBar.sizeToFit()
-            controller.searchBar.placeholder = "Search me"
-            controller.searchResultsUpdater = self
-            definesPresentationContext = true
-
-//            contactList.tableHeaderView = controller.searchBar
-
-            return controller
-        }()
-        contactList.showsVerticalScrollIndicator = false
-    }
 }
 
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            return 0
-        }
-        return sections[section].numberOfObjects
+        return presenter.numberOfItems(in: section)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -189,12 +172,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             print("Can't create reusable Cell in TableView")
             return dequedCell
         }
-        guard let contact = fetchedResultsController.object(at: indexPath) as? Contact else {
-            print("Can't fetch object from FetchResultController by indexPath = \(indexPath)")
-            return cell
-        }
-        cell.fillData(with: contact)
-        return cell
+        return presenter.configure(cell, withContactAt: indexPath)
     }
 }
 
@@ -212,35 +190,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension MainViewController: UISearchResultsUpdating {
-
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        filterFetchedResultsBySearchText(searchBar.text!)
-    }
-
-    func filterFetchedResultsBySearchText(_ searchText: String) {
-        if isFiltering {
-            let predicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
-            fetchedResultsController.fetchRequest.predicate = predicate
-            do {
-                try fetchedResultsController.performFetch()
-            } catch {
-                print(error)
-            }
-            contactList.reloadData()
-        } else {
-            let predicate = NSPredicate(value: true)
-            fetchedResultsController.fetchRequest.predicate = predicate
-            do {
-                try fetchedResultsController.performFetch()
-            } catch {
-                print(error)
-            }
-            contactList.reloadData()
-        }
-    }
-
+extension MainViewController {
     private enum CurrentLayout: String, CaseIterable {
         case twoPerRow
         case onePerRow
@@ -273,3 +223,33 @@ extension MainViewController: UISearchResultsUpdating {
         }
     }
 }
+
+//extension MainViewController: UISearchResultsUpdating {
+//
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchBar = searchController.searchBar
+//        filterFetchedResultsBySearchText(searchBar.text!)
+//    }
+//
+//    func filterFetchedResultsBySearchText(_ searchText: String) {
+//        if isFiltering {
+//            let predicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
+//            fetchedResultsController.fetchRequest.predicate = predicate
+//            do {
+//                try fetchedResultsController.performFetch()
+//            } catch {
+//                print(error)
+//            }
+//            contactList.reloadData()
+//        } else {
+//            let predicate = NSPredicate(value: true)
+//            fetchedResultsController.fetchRequest.predicate = predicate
+//            do {
+//                try fetchedResultsController.performFetch()
+//            } catch {
+//                print(error)
+//            }
+//            contactList.reloadData()
+//        }
+//    }
+//}

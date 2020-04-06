@@ -100,7 +100,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
+            <point key="canvasLocation" x="867" y="-512"/>
         </view>
     </objects>
     <resources>

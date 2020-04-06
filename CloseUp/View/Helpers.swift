@@ -9,8 +9,9 @@
 import Foundation
 import  UIKit
 
-func setBackground(for sender: UIView) {
+func setBackground(for sender: UIViewController) {
+    let view = sender.view
     let gradient = Background().gradient
-    gradient.frame = sender.bounds
-    sender.layer.insertSublayer(gradient, at: 0)
+    gradient.frame = view?.bounds ?? CGRect()
+    view?.layer.insertSublayer(gradient, at: 0)
 }
